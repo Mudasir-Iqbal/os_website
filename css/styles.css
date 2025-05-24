@@ -1,0 +1,228 @@
+/* Main Styles for OS Architecture Explorer - Horizontal Tree Version */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --node-color: #fff;
+    --node-border: #3498db;
+    --node-hover: #e3f2fd;
+    --link-color: #ddd;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+#search-input {
+    width: 300px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+}
+
+#search-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.legend-item {
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.circle {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+#visualization {
+    flex: 1;
+    width: 100%;
+    height: calc(100vh - 200px);
+    background-color: white;
+    overflow: auto;
+    padding: 20px;
+}
+
+#info-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
+    transform: translateX(400px);
+    transition: transform var(--transition-speed);
+}
+
+#info-panel.active {
+    transform: translateX(0);
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+#close-info {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#info-content {
+    padding: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* D3 Visualization Styles */
+.node {
+    cursor: pointer;
+}
+
+.node circle {
+    fill: var(--node-color);
+    stroke: var(--node-border);
+    stroke-width: 1.5px;
+}
+
+.node:hover circle {
+    fill: var(--node-hover);
+}
+
+.node text {
+    font: 12px sans-serif;
+    fill: var(--text-color);
+    pointer-events: none;
+}
+
+.link {
+    fill: none;
+    stroke: var(--link-color);
+    stroke-width: 1px;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    pointer-events: none;
+    max-width: 300px;
+    z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #info-panel {
+        width: 100%;
+        top: auto;
+        right: auto;
+        bottom: 0;
+        transform: translateY(100%);
+    }
+    
+    #info-panel.active {
+        transform: translateY(0);
+    }
+    
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #search-input {
+        width: 90%;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+    }
+    
+    #search-button {
+        width: 90%;
+        border-radius: 4px;
+    }
+}

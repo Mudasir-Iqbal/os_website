@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Architecture Explorer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search OS concepts...">
+        <button id="search-button">Search</button>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <span class="circle"></span> Click on nodes to expand/collapse
+        </div>
+    </div>
+
+    <div id="visualization"></div>
+
+    <div id="info-panel">
+        <div class="info-header">
+            <h2 id="info-title">Select a topic</h2>
+            <button id="close-info">×</button>
+        </div>
+        <div id="info-content">
+            <p>Click on any node in the visualization to see details about that Operating System concept.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>OS Architecture Explorer | <a href="https://github.com/Mudasir-Iqbal/os-tree" target="_blank">GitHub Repository</a></p>
+    </footer>
+
+    <script src="data/os-tree-data.js"></script>
+    <script src="js/visualization.js"></script>
+</body>
+</html>
